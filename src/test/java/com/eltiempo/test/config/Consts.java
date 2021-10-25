@@ -12,4 +12,6 @@ public class Consts {
     public final static String INVALID_ERROR = "Invalid username or password";
     public final static String DASHBOARD_PAGE = "http://sahitest.com/demo/training/books.htm";
     public final static String REGISTER_PAGE = "http://sahitest.com/demo/training/register.htm";
+    public final static String REG_ACCEPTED_TOS = "Registered Successfully";
+    public final static String REG_NOACCEPTED_TOS = "User must accept terms and conditions before register.";
 }

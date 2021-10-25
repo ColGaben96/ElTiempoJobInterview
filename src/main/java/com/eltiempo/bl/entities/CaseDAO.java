@@ -12,9 +12,20 @@ import java.util.ArrayList;
  */
 public class CaseDAO {
 
+    /**
+     * Attribute to collect the cases in execution
+     */
     private ArrayList<CaseDTO> cases = new ArrayList<>();
 
-    public int createCase(long caseID, String caseName, String caseDescription, boolean hasToFail) throws AlreadyExistsException {
+    /**
+     * Will create the case
+     * @param caseID
+     * @param caseName
+     * @param caseDescription
+     * @param hasToFail
+     * @throws AlreadyExistsException
+     */
+    public void createCase(long caseID, String caseName, String caseDescription, boolean hasToFail) throws AlreadyExistsException {
         for (CaseDTO found : cases) {
             if (found.getCaseID() == caseID) {
                 throw new AlreadyExistsException();
@@ -22,7 +33,6 @@ public class CaseDAO {
         }
         var newCase = new CaseDTO(caseID, caseName, caseDescription, hasToFail);
         cases.add(newCase);
-        return 0;
     }
 
     public CaseDTO searchExact(long caseID) throws NotFoundException {

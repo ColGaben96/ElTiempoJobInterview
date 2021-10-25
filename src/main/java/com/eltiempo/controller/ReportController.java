@@ -42,6 +42,14 @@ public class ReportController {
         }
     }
 
+    public void deleteReport(long reportID) {
+        try {
+            reports.deleteReport(reports.searchExact(reportID));
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void updateReport(long reportID, CaseExecutionState state, long timeTaken) {
         var fp = new FileProcessor();
         try {

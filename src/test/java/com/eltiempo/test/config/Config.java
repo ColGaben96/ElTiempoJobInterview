@@ -4,14 +4,18 @@ import com.eltiempo.bl.utils.exception.NotFoundException;
 import com.eltiempo.bl.utils.states.CaseExecutionState;
 import com.eltiempo.controller.CaseController;
 import com.eltiempo.controller.ReportController;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Wait;
 
 import java.io.File;
+import java.util.function.Function;
 
 public abstract class Config {
 
     protected static WebDriver driver;
+    protected static Wait wait;
     private static CaseController cases = new CaseController();
     private static ReportController report = new ReportController();
     protected static long timer = System.nanoTime();
@@ -48,6 +52,11 @@ public abstract class Config {
 
     public static void endSession() {
         driver.quit();
+    }
+
+    public static void deleteCase(long caseID) {
+        cases.deleteCase(caseID);
+        report.deleteReport(caseID);
     }
 
     protected static void capture(long reportID, File screen) {

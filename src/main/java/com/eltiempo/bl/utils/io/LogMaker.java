@@ -13,10 +13,15 @@ public class LogMaker {
         return new DateProcessor().parse2String(Timestamp.valueOf(LocalDateTime.now()))
                 + ": Updated case "+reportDTO.getExecCase().getCaseID()
                 + " state to "
-                + reportDTO.getState()
-                + " at "
-                + reportDTO.getTimeTaken()
-                + " seconds of testing";
+                + reportDTO.getState();
+    }
+
+    public String caseDelete(CaseDTO caseDTO) {
+        return new DateProcessor().parse2String(Timestamp.valueOf(LocalDateTime.now()))
+                + ": Deleted case "+caseDTO.getCaseID()
+                + ": "
+                + caseDTO.getCaseName()
+                + " to let Cucumber do the rest of the job.";
     }
 
     public String caseCreation(CaseDTO caseDTO) {

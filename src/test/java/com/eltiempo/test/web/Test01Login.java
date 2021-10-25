@@ -28,14 +28,13 @@ public class Test01Login extends Config {
                 """
                         El login debe dejar ingresar con las credenciales correctas. Comprobar a toda costa que este
                         requerimiento se cumpla.""", false);
-        createReport(1,1);
-        createReport(2,2);
         config();
     }
 
     @Test
     @Then("User inputs bad user and password credentials and Error Message should display")
     public void makeBadLogin() {
+        createReport(1,1);
         try {
             var user = driver.findElement(By.name("user"));
             user.sendKeys("badUser");
@@ -62,6 +61,7 @@ public class Test01Login extends Config {
     @Test
     @Then("User inputs correct user and passwords credentials and Dashboard should load")
     public void makeGoodLogin() {
+        createReport(2,2);
         try {
             var user = driver.findElement(By.name("user"));
             user.sendKeys(Consts.USERNAME);
@@ -87,6 +87,8 @@ public class Test01Login extends Config {
     @AfterAll
     @And("Session should be done")
     public static void postRun() {
+        deleteCase(1);
+        deleteCase(2);
         endSession();
     }
 }

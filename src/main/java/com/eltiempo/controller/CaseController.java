@@ -34,6 +34,16 @@ public class CaseController {
         }
     }
 
+    public void deleteCase(long caseID) {
+        var fp = new FileProcessor();
+        try {
+            fp.writeLog(new LogMaker().caseDelete(cases.searchExact(caseID)), dExec);
+            cases.deleteCase(cases.searchExact(caseID));
+        } catch (IOException | NotFoundException io) {
+            io.printStackTrace();
+        }
+    }
+
     public CaseDTO getCase(long caseID) throws NotFoundException {
         return cases.searchExact(caseID);
     }
