@@ -1,9 +1,6 @@
 package com.eltiempo.test.config;
 
-import com.eltiempo.bl.data.CaseDTO;
-import com.eltiempo.bl.utils.df.DateProcessor;
 import com.eltiempo.bl.utils.exception.NotFoundException;
-import com.eltiempo.bl.utils.io.ScreenshotMaker;
 import com.eltiempo.bl.utils.states.CaseExecutionState;
 import com.eltiempo.controller.CaseController;
 import com.eltiempo.controller.ReportController;
@@ -18,7 +15,6 @@ public abstract class Config {
     private static CaseController cases = new CaseController();
     private static ReportController report = new ReportController();
     protected static long timer = System.nanoTime();
-    private static ScreenshotMaker screenshot = new ScreenshotMaker();
 
     protected static void restartTimer() {
         timer = System.nanoTime();
